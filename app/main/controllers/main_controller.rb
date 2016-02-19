@@ -1,12 +1,48 @@
 # By default Volt generates this controller for your Main component
 module Main
   class MainController < Volt::ModelController
+     model :store
     def index
       # Add code for when the index view is loaded
     end
 
     def about
       # Add code for when the about view is loaded
+    end
+
+    def add_todo
+      _todos << { name: _new_todo }
+      _new_todo = ''
+    end
+
+    def current_todo
+      _todos[(params._index || 0).to_i]
+    end
+
+    def check_all
+      _todos.each { |todo| todo._completed = true }
+    end
+
+    def completed
+      _todos.count { |t| t._completed }
+    end
+
+    def incomplete
+      # because .size and completed both return promises, we need to
+      # call .then on them to get their value.
+      _todos.size.then do |size|
+        completed.then do |completed|
+          size - completed
+        end
+      end
+    end
+
+    def percent_complete
+      _todos.size.then do |size|
+        completed.then do |completed|
+          (completed / size.to_f * 100).round
+        end
+      end
     end
 
     private
