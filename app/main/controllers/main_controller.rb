@@ -3,10 +3,10 @@ module Main
   class MainController < Volt::ModelController
      model :store
 
-     
+
     def add_todo
       _todos << { name: _new_todo }
-      _new_todo = ''
+      self._new_todo = ''
     end
 
     def current_todo
