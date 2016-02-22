@@ -1,6 +1,5 @@
-GIT
-  remote: https://github.com/znetstar/volt-mongo.git
-  revision: a1493fb0a9dca97c6d61fffa63a5f64a92d32b3d
+PATH
+  remote: vendor/volt-mongo
   specs:
     volt-mongo (0.2.0)
       mongo (~> 2.1.2)
