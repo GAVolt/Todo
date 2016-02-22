@@ -65,6 +65,8 @@ def add_todo
 In these two chunks of code, we have an event handler method called 'add_todo'
 In this, we have an input box, that takes a value called _new_todo. In our controller, we define the method so that it takes the new_todo and adds it to our array of todos. After that, self._new_todo resets the input box to be empty. 
 
+***Additionally,*** adding model :store to your main_controller, will store your data across servers.
+
 
 
 ### Docs for referencing 
